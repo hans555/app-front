@@ -27,7 +27,7 @@ function App() {
                   <Link to="/cancelAppointment">Cancel Appointment</Link>
                 </li>
                 <li className="List">
-                  <Link to="/createAppointment">Convert CSV file to Appointments</Link>
+                  <Link to="/createAppointment">Convert CSV file</Link>
                 </li>
               </ul>
             </nav>
