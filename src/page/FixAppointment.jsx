@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 function FixAppointment() {
@@ -6,7 +6,7 @@ function FixAppointment() {
   const [patient_id, setPatient_id] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [appointment_id, setAppointment_id] = useState("")
+  const [appointment_id, setAppointment_id] = useState("");
 
   const page_style = {
     marginTop: "50px",
@@ -41,11 +41,11 @@ function FixAppointment() {
       .then((resp) => {
         if (resp.ok) {
           console.log("Appointment created");
-          setDoctor_id("")
-          setPatient_id("")
-          setDate("")
-          setTime("")
-          setAppointment_id("")
+          setDoctor_id("");
+          setPatient_id("");
+          setDate("");
+          setTime("");
+          setAppointment_id("");
         } else {
           console.log("Failed to create appointment");
         }
@@ -60,7 +60,7 @@ function FixAppointment() {
       </div>
       <div>
         <Form>
-        <Form.Group style={form_style}>
+          <Form.Group style={form_style}>
             <Form.Label style={form_label_style}>Appoinment ID:</Form.Label>
             <Form.Control
               type="text"
