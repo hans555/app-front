@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Papa from "papaparse";
 
 function CreateAppointment() {
   const [file, setFile] = useState(null);
-  const [appointments, setAppointments] = useState([]);
-
-  useEffect(() => {
-    console.log(appointments);
-  }, [appointments]);
 
   const page_style = {
     marginTop: "50px",
@@ -25,12 +20,12 @@ function CreateAppointment() {
     textAlign: "right",
     marginRight: "20px",
   };
-  
-  const dateFormatter = (d) => {
-    return d.slice(4, 8) + "-" + d.slice(2, 4) + "-" + d.slice(0, 2)
-  }
 
-  const handleCreateAppointments = () => {
+  const dateFormatter = (d) => {
+    return d.slice(4, 8) + "-" + d.slice(2, 4) + "-" + d.slice(0, 2);
+  };
+
+  const handleConvertCSV = () => {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
@@ -42,15 +37,17 @@ function CreateAppointment() {
             appointment_date: dateFormatter(arr[0]),
             appointment_time: arr[1],
             doctor_id: app.doctor_id,
-            patient_id: app.patient_id
+            patient_id: app.patient_id,
           };
         });
-        setAppointments(new_appointments);
+        handleCreateAppointments(new_appointments)
       },
     });
+  };
 
+  const handleCreateAppointments = (appointments) => {
     let payload = {
-      appointments: appointments
+      appointments: appointments,
     };
     const requestUrl = "http://localhost:8080/appointment/create";
     fetch(requestUrl, {
@@ -87,7 +84,7 @@ function CreateAppointment() {
           </Form.Group>
           <Button
             variant="primary"
-            onClick={handleCreateAppointments}
+            onClick={handleConvertCSV}
             disabled={file === null}
           >
             Submit
