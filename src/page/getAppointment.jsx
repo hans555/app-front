@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 function GetAppointment(props) {
@@ -47,12 +47,13 @@ function GetAppointment(props) {
     })
       .then((resp) => {
         if (resp.ok) {
+					setId("")
+					setDate("")
           resp.json().then((response) => {
-            console.log(response);
             setAppointment(response.appointments);
           });
         } else {
-          console.log("failed to get appointments");
+          console.log("Failed to get appointments");
         }
       })
       .catch((e) => console.log(e));

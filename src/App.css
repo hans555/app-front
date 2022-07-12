@@ -8,16 +8,6 @@
   margin: 50px;
 }
 
-.Table {
-  border: "1px solid white";
-}
-
-.th {
-  border: "1px solid white";
-  text-align: "center";
-}
-
-.td {
-  border: "1px solid white";
-  text-align: "center";
+.List {
+  margin-bottom: 10px;
 }

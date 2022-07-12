@@ -1,8 +1,9 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./page/Home";
+import CancelAppointment from "./page/CancelAppointment";
 import GetAppointment from "./page/GetAppointment";
+import FixAppointment from "./page/FixAppointment";
 
 function App() {
   return (
@@ -15,17 +16,21 @@ function App() {
           <div>
             <nav>
               <ul>
-                <li>
+                <li className="List">
                   <Link to="/getAppointment">Get Appointment</Link>
                 </li>
-                <li>
-                  <Link to="/home">Home</Link>
+                <li className="List">
+                  <Link to="/fixAppointment">Fix Appointment</Link>
+                </li>
+                <li className="List">
+                  <Link to="/cancelAppointment">Cancel Appointment</Link>
                 </li>
               </ul>
             </nav>
             <Routes>
               <Route path="/getAppointment" element={<GetAppointment />} />
-              <Route path="/Home" element={<Home />} />
+              <Route path="/fixAppointment" element={<FixAppointment />} />
+              <Route path="/cancelAppointment" element={<CancelAppointment />} />
             </Routes>
           </div>
         </Router>
